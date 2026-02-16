@@ -6,6 +6,7 @@ dependencies = [
     "beautifulsoup4>=4.13.3",
     "flask>=3.1.0",
     "flask-flatpages>=0.8.3",
+    "frozen-flask>=1.0.2",
     "markdown>=3.7",
     "pygments>=2.19.1",
     "python-dotenv>=1.0.1",

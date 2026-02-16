@@ -1,11 +1,11 @@
 import mimetypes
 
 from flask import Flask
-from flask_flatpages import FlatPages  # type: ignore
+from flask_flatpages import FlatPages
 
 from .config import Config
 
-from .flask_frozen import Freezer
+from flask_frozen import Freezer
 
 app: Flask = Flask(import_name=__name__)
 flatpages: FlatPages = FlatPages(app=app)

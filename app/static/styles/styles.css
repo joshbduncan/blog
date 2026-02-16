@@ -31,6 +31,7 @@ h5,
 h6 {
     font-family:
         "Instrument Serif", ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    text-wrap: balance;
 }
 
 p {

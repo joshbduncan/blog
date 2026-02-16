@@ -74,6 +74,9 @@ class MarkdownDivProcessor(BlockProcessor):
         # get first line of fence
         match = re.match(self.RE_FENCE_START, blocks[0])
 
+        if not match:
+            return
+
         # replace the fence start
         blocks[0] = re.sub(self.RE_FENCE_START, "", blocks[0])
 
