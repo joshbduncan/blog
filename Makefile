@@ -21,9 +21,9 @@ test-freeze: # freeze the blog and start up dev server on static files
 ##@ Build
 build: ## freeze the blog for deployment
 	uv run python blog.py --build
-	esbuild build/static/styles/styles.css --target=chrome90 --outfile=build/static/styles/styles.css --allow-overwrite
+	esbuild build/static/css/styles.css --target=chrome90 --outfile=build/static/css/styles.css --allow-overwrite
 
 render: ## freeze the blog for deployment on render
 	uv run python blog.py --build
 	npm install esbuild
-	esbuild build/static/styles/styles.css --target=chrome90 --outfile=build/static/styles/styles.css --allow-overwrite
+	esbuild build/static/css/styles.css --target=chrome90 --outfile=build/static/css/styles.css --allow-overwrite

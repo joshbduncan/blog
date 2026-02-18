@@ -101,13 +101,6 @@ def root_static(filename: str) -> Response:
 #########
 
 
-@app.route("/styles.html")
-def styles() -> str:
-    path: str = f"{PAGE_DIR}/styles"
-    page = flatpages.get_or_404(path)
-    return render_template("page.html", page=page)
-
-
 @app.route("/about.html")
 def about() -> str:
     path: str = f"{PAGE_DIR}/about"

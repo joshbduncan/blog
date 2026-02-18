@@ -31,10 +31,37 @@
       {% include "og-meta.html" %}
 
       <!-- Styling -->
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/pico.colors.min.css') }}" />
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/pico.min.css') }}" />
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}" />
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/codehilite.css') }}" />
+
+      <!-- PRE-APPLY THEME ASAP (prevents flash if this runs before first paint) -->
+      <script>
+            (function () {
+                  const STORAGE_KEY = "theme";
+                  const ROOT_ATTR = "data-theme";
+
+                  function preferredTheme() {
+                        return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+                  }
+
+                  function storedTheme() {
+                        try {
+                              const v = localStorage.getItem(STORAGE_KEY);
+                              return v === "dark" || v === "light" ? v : null;
+                        } catch {
+                              return null;
+                        }
+                  }
+
+                  const theme = storedTheme() ?? preferredTheme();
+                  document.documentElement.setAttribute(ROOT_ATTR, theme);
+            })();
+      </script>
+
+      <link rel="preload" href="{{ url_for('static', filename='fonts/InstrumentSerif-Regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pico.colors.min.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pico.min.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/codehilite.css') }}" />
 
       <!-- Icons -->
       <link rel="icon" href="{{ url_for('root_static', filename='favicon.ico') }}" sizes="any" />
@@ -43,6 +70,7 @@
 
       <link rel="manifest" href="{{ url_for('manifest') }}" />
 
+      <script src="{{ url_for('static', filename='js/theme-toggle.js') }}" defer></script>
       <script data-goatcounter="https://jbd.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 
@@ -50,7 +78,6 @@
       <header class="container page-header">
             {% include "logo.html" %}
             {% include "nav.html" %}
-            <script src="{{ url_for('static', filename='js/theme-toggle.js') }}"></script>
       </header>
       <main class="container">
             {% block content %}{% endblock %}

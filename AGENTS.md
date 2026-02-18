@@ -143,7 +143,7 @@ def get_rss_pubdate(date: datetime | None = None) -> str:
 **Static Files:**
 - Located in `app/static/`
 - Images: `app/static/images/`
-- Styles: `app/static/styles/`
+- Styles: `app/static/css/`
 - Downloads: `app/static/downloads/`
 
 ### Markdown Content
@@ -216,7 +216,7 @@ blog/
 3. Check frozen output with `make test-freeze`
 
 **Update styles:**
-1. Edit CSS in `app/static/styles/`
+1. Edit CSS in `app/static/css/`
 2. No build step needed for CSS
 3. Hard refresh browser to see changes
 
