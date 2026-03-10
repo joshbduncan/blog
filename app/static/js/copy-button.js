@@ -21,11 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     blocks.forEach((block) => {
         const button = document.createElement("a");
+        let resetTimer = null;
+
         button.className = "secondary copy-to-clipboard";
         button.innerHTML = copyIcon;
         button.setAttribute("aria-label", "Copy to clipboard");
         button.setAttribute("data-tooltip", "Copy to clipboard");
         button.setAttribute("data-placement", "left");
+
         block.appendChild(button);
 
         button.addEventListener("click", async () => {
@@ -34,12 +37,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 const code = block.querySelector("pre") || block;
                 await navigator.clipboard.writeText(code.textContent.trim());
 
+                if (resetTimer) {
+                    clearTimeout(resetTimer);
+                }
+
                 button.innerHTML = copiedIcon;
                 button.classList.add("success");
                 button.setAttribute("aria-label", "Copied");
                 button.setAttribute("data-tooltip", "Copied");
 
-                setTimeout(() => {
+                resetTimer = setTimeout(() => {
                     button.innerHTML = copyIcon;
                     button.classList.remove("success");
                     button.setAttribute("aria-label", "Copy to clipboard");
