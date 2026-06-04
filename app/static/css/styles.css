@@ -229,6 +229,12 @@ ul.tags {
 }
 
 .social-icons {
+    --icon-size: 3rem;
+
+    @media (max-width: 768px) {
+        --icon-size: 2rem;
+    }
+
     padding-block-start: 1rem;
 
     ul {
@@ -241,11 +247,11 @@ ul.tags {
     }
 
     svg {
-        height: 60px;
-    }
+        height: var(--icon-size);
 
-    svg.unsplash {
-        height: 51px;
+        &.unsplash {
+            height: calc(var(--icon-size) * 0.85);
+        }
     }
 }
 
