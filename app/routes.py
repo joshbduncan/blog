@@ -168,6 +168,16 @@ def tag(tag: str) -> str:
     return render_template("posts.html", posts=posts, filter=tag)
 
 
+##########
+# ROUTES #
+##########
+
+
+@app.route("/projects/qrcoder.html")
+def qrcoder() -> str:
+    return render_template("projects/qrcoder.html")
+
+
 ############
 # XML DATA #
 ############
