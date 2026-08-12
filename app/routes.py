@@ -174,8 +174,9 @@ def tag(tag: str) -> str:
 
 
 @app.route("/projects/qrcoder.html")
+@app.route("/projects/qrcoder")
 def qrcoder() -> str:
-    return render_template("projects/qrcoder.html")
+    return render_template("projects/qrcoder/index.html")
 
 
 ############

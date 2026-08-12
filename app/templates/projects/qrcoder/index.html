@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Coder</title>
+
+  <!-- Icons -->
+  <link rel="icon" href="{{ url_for('root_static', filename='favicon.ico') }}" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('root_static', filename='favicon.svg') }}" />
+  <link rel="apple-touch-icon" href="{{ url_for('root_static', filename='apple-touch-icon.png') }}" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='projects/qrcoder/style.css') }}">
+</head>
+
+<body>
+  <main class="card">
+    <h1>QR Coder</h1>
+    <p class="subtitle">Turn a URL into a scannable QR code.</p>
+
+    <form id="qr-form">
+      <label for="url-input" class="sr-only">URL</label>
+      <input type="url" id="url-input" name="url" placeholder="https://example.com" autocomplete="off" required>
+
+      <div class="actions">
+        <button type="submit" id="generate-btn">Generate</button>
+        <button type="button" id="restart-btn">Restart</button>
+      </div>
+    </form>
+
+    <p id="error-message" class="error" hidden></p>
+
+    <div id="qrcode" class="qrcode"></div>
+
+    <div id="download-group" class="download-group" hidden>
+      <a id="download-btn" class="download-btn" href="#" download="qrcode.png">Download QR Code</a>
+      <details id="download-dropdown" class="dropdown">
+        <summary class="dropdown-toggle" aria-label="More download formats">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+               class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+            <path
+                  d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+          </svg>
+        </summary>
+        <div class="dropdown-menu">
+          <a href="#" id="download-jpeg" download="qrcode.jpg">Download as JPEG</a>
+          <a href="#" id="download-gif" download="qrcode.gif">Download as GIF</a>
+          <a href="#" id="download-svg" download="qrcode.svg">Download as SVG</a>
+        </div>
+      </details>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='projects/qrcoder/qrcode.js') }}"></script>
+  <script src="{{ url_for('static', filename='projects/qrcoder/app.js') }}"></script>
+</body>
+
+</html>
