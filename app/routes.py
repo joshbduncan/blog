@@ -11,6 +11,7 @@ import xml.etree.cElementTree as ET
 
 from flask import (
     Response,
+    redirect,
     abort,
     render_template,
     request,
@@ -173,10 +174,14 @@ def tag(tag: str) -> str:
 ##########
 
 
-@app.route("/projects/qrcoder.html")
-@app.route("/projects/qrcoder")
+@app.route("/projects/qrcoder/")
 def qrcoder() -> str:
     return render_template("projects/qrcoder/index.html")
+
+
+@app.route("/projects/qrcoder.html")
+def qrcoder_legacy():
+    return redirect(url_for("qrcoder"), code=301)
 
 
 ############
