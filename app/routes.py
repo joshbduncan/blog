@@ -18,6 +18,7 @@ from flask import (
     url_for,
     send_from_directory,
 )
+from flask.typing import ResponseReturnValue
 from flask_flatpages import Page
 
 from app import app, flatpages, freezer
@@ -180,7 +181,7 @@ def qrcoder() -> str:
 
 
 @app.route("/projects/qrcoder.html")
-def qrcoder_legacy():
+def qrcoder_legacy() -> ResponseReturnValue:
     return redirect(url_for("qrcoder"), code=301)
 
 
