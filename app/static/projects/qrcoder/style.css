@@ -71,7 +71,7 @@ h1 {
     white-space: nowrap;
 }
 
-input[type="url"] {
+input[type="text"] {
     width: 100%;
     padding: 0.65rem 0.75rem;
     font-size: 1rem;
@@ -81,7 +81,7 @@ input[type="url"] {
     color: var(--text);
 }
 
-input[type="url"]:focus {
+input[type="text"]:focus {
     outline: 2px solid var(--accent);
     outline-offset: 1px;
 }
